@@ -244,11 +244,11 @@ Em suma, é importante notar que a probabilidade depende fortemente do ambiente,
 | **Acesso não autorizado**    | Alta              | Baixo        | Baixo        |
 
 
-### Simulando ataque de Acesso não autorizado
+### Simulando Ataque de Sniffing
 
-O vídeo abaixo demonstra a execução do Ataque 1, no qual o objetivo é realizar uma análise dinâmica e identificar o endereço IP do ESP32 na rede para, em seguida, explorar endpoints HTTP expostos sem autenticação.
+O vídeo abaixo demonstra a execução do Ataque 2, no qual o objetivo é realizar uma análise dinâmica e identificar o endereço IP do ESP32 na rede para, em seguida, explorar endpoints HTTP expostos sem autenticação.
 
-[Vídeo]()
+- [Link do Vídeo](https://drive.google.com/file/d/1uol16TWXkIhC2tFQsf6fLd-tug_21W0A/view?usp=sharing)
 
 #### Etapa 1 — Captura do tráfego e descoberta do IP do ESP32
 
@@ -260,7 +260,7 @@ arp
 Esse filtro permite visualizar apenas pacotes ARP, que são especialmente úteis para identificar dispositivos pela rede. Entre as requisições ARP capturadas, procurei por pacotes contendo o fabricante Espressif, que corresponde ao ESP32.
 Ao localizar o pacote desejado, foi possível identificar o seguinte campo:
 ```
-**Target IP Address: 10.136.53.206**
+Target IP Address: 10.136.53.206
 ```
 
 <div align="center">
@@ -285,7 +285,7 @@ Dessa forma, todas as requisições HTTP originadas ou destinadas ao ESP32 passa
 Entre elas, identifiquei uma URL acessível via GET, que permitia controlar os LEDs do circuito.
 
 <div align="center">
-  <sub>FIGURA 2 – Filtro IP aplicado como filtro no Wireshark</sub><br>
+  <sub>FIGURA 3 – Filtro IP aplicado como filtro no Wireshark</sub><br>
   <img src="assets/htpp.png" width="100%" alt="nome alternativo"><br>
   <sup>Fonte: Material produzido pela autora, 2025.</sup>
 </div>
@@ -299,3 +299,9 @@ Após copiar a URL exposta, pude acessá-la diretamente pelo navegador. A requis
 - Acessar o "painel" exposto pelo ESP32
 
 - Manipular livremente o sistema, demonstrando controle total sobre o dispositivo
+
+<div align="center">
+  <sub>FIGURA 4 – Página web ESP32</sub><br>
+  <img src="assets/pagina.png" width="100%" alt="nome alternativo"><br>
+  <sup>Fonte: Material produzido pela autora, 2025.</sup>
+</div>
